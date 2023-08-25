@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test121 : MonoBehaviour
+{
+    // 'm'과 "rn"이 모양이 비슷하게 생긴 점을 활용해 문자열에 장난을 하려고 합니다. 문자열 rny_string이 주어질 때, rny_string의 모든 'm'을 "rn"으로 바꾼 문자열을 return 하는 solution 함수를 작성해 주세요.
+
+    void Start()
+    {
+        Solution("masterpiece");
+        Solution("programmers");
+        Solution("jerry");
+        Solution("burn");
+    }
+
+    string Solution(string rny_string)
+    {
+        string correct = "";
+
+        for (int i = 0; i < rny_string.Length; i++)
+        {
+            if (rny_string[i].ToString() == "m")
+            {
+                correct += "rn";
+            }
+            else
+            {
+                correct += rny_string[i];
+            }
+        }
+
+        Debug.Log(correct);
+        return correct;
+    }
+}
