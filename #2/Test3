@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test84 : MonoBehaviour
+{
+    // 정수 n과 k가 주어졌을 때, 1 이상 n이하의 정수 중에서 k의 배수를 오름차순으로 저장한 배열을 return 하는 solution 함수를 완성해 주세요.
+    
+    void Start()
+    {
+        Solution(10, 3);
+        Solution(15, 5);
+    }
+
+    int[] Solution(int n, int k)
+    {
+        List<int> numbers = new List<int>();
+
+        for (int i = 1; i <= n; i++)
+        {
+            if (i % k == 0)
+            {
+                numbers.Add(i);
+            }
+        }
+
+        int[] correct = new int[numbers.Count];
+        int count = 0;
+
+        foreach (int num in numbers)
+        {
+            correct[count] = num;
+            Debug.Log(correct[count]);
+            count++;
+        }
+
+        return correct;
+    }
+}
