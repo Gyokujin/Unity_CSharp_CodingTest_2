@@ -1,0 +1,22 @@
+using Microsoft.Unity.VisualStudio.Editor;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test108 : MonoBehaviour
+{
+    // 알파벳으로 이루어진 문자열 myString이 주어집니다. 모든 알파벳을 소문자로 변환하여 return 하는 solution 함수를 완성해 주세요.
+    
+    void Start()
+    {
+        Solution("aBcDeFg");
+        Solution("aaa");
+    }
+
+    string Solution(string myString)
+    {
+        string correct = myString.ToLower();
+        Debug.Log(correct);
+        return correct;
+    }
+}
