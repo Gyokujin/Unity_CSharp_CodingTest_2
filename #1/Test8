@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test80 : MonoBehaviour
+{
+    // 문자열 my_string과 정수 s, e가 매개변수로 주어질 때, my_string에서 인덱스 s부터 인덱스 e까지를 뒤집은 문자열을 return 하는 solution 함수를 작성해 주세요.
+    
+    void Start()
+    {
+        Solution("Progra21Sremm3", 6, 12);
+        Solution("Stanley1yelnatS", 6, 12);
+    }
+
+    string Solution(string my_string, int s, int e)
+    {
+        string correct = "";
+
+        for (int i = 0; i < s; i++)
+        {
+            correct += my_string[i];
+        }
+
+        for (int j = 0; j <= e - s; j++)
+        {
+            correct += my_string[e - j];
+        }
+
+        for (int k = e; k < my_string.Length - 1; k++)
+        {
+            correct += my_string[k + 1];
+        }
+
+        Debug.Log(correct);
+        return correct;
+    }
+}
