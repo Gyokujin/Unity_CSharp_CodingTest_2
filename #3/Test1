@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Test91 : MonoBehaviour
+{
+    // 정수 배열 arr가 주어집니다. 배열 안의 2가 모두 포함된 가장 작은 연속된 부분 배열을 return 하는 solution 함수를 완성해 주세요. 단, arr에 2가 없는 경우[-1] 을 return 합니다.
+
+    void Start()
+    {
+        Solution(1, 2, 1, 4, 5, 2, 9);
+        Solution(1, 2, 1);
+        Solution(1, 1, 1);
+        Solution(1, 2, 1, 2, 1, 10, 2, 1);
+    }
+
+    int[] Solution(params int[] arr)
+    {
+        List<int> numbers = new List<int>();
+
+        int start = -1;
+        int end = -1;
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == 2)
+            {
+                if (start == -1)
+                {
+                    start = i;
+                }
+                else
+                {
+                    end = i;
+                }
+            }
+        }
+
+        if (start != -1)
+        {
+            if (end != -1)
+            {
+                for (int i = start; i <= end; i++)
+                {
+                    numbers.Add(arr[i]);
+                }
+            }
+            else
+            {
+                numbers.Add(arr[start]);
+            }
+        }
+
+        int[] correct = numbers.Count == 0 ? new int[] { -1 } : new int[numbers.Count];
+
+        if (numbers.Count != 0)
+        {
+            int count = 0;
+
+            foreach (int num in numbers)
+            {
+                correct[count] = num;
+                Debug.Log(correct[count]);
+                count++;
+            }
+        }
+        else
+        {
+            Debug.Log(correct[0]);
+        }
+
+        return correct;
+    }
+}
