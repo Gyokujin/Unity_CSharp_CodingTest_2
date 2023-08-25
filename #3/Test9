@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test99 : MonoBehaviour
+{
+    // 오늘 해야 할 일이 담긴 문자열 배열 todo_list와 각각의 일을 지금 마쳤는지를 나타내는 boolean 배열 finished가 매개변수로 주어질 때, 
+    // todo_list에서 아직 마치지 못한 일들을 순서대로 담은 문자열 배열을 return 하는 solution 함수를 작성해 주세요.
+
+    string[] stringArrange = { "problemsolving", "practiceguitar", "swim", "studygraph" };
+    bool[] booleanArrange = { true, false, true, false };
+
+    void Start()
+    {
+        Solution(stringArrange, booleanArrange);
+    }
+
+    string[] Solution(string[] todo_list, params bool[] finished)
+    {
+        List<string> arrange = new List<string>();
+
+        if (todo_list.Length == finished.Length)
+        {
+            for (int i = 0; i < todo_list.Length; i++)
+            {
+                if (finished[i] == false)
+                {
+                    arrange.Add(todo_list[i]);
+                }
+            }
+        }
+
+        string[] correct = new string[arrange.Count];
+        int count = 0;
+
+        foreach (string word in arrange)
+        {
+            correct[count] = word;
+            Debug.Log(correct[count]);
+            count++;
+        }
+
+        return correct;
+    }
+}
