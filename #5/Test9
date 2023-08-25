@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test117 : MonoBehaviour
+{
+    // 문자열 myString이 주어집니다. myString을 문자 "x"를 기준으로 나눴을 때 나눠진 문자열 각각의 길이를 순서대로 저장한 배열을 return 하는 solution 함수를 완성해 주세요.
+
+    void Start()
+    {
+        Solution("oxooxoxxox");
+        Solution("xabcxdefxghi");
+    }
+
+    int[] Solution(string myString)
+    {
+        List<int> arrange = new List<int>();
+        int stack = 0;
+
+        for (int i = 0; i < myString.Length; i++)
+        {
+            string word = myString[i].ToString();
+
+            if (word == "x")
+            {
+                arrange.Add(stack);
+                stack = 0;
+            }
+            else
+            {
+                stack++;
+            }
+        }
+
+        arrange.Add(stack);
+
+        int[] correct = new int[arrange.Count];
+        int count = 0;
+
+        foreach (int n in arrange)
+        {
+            correct[count] = n;
+            Debug.Log(correct[count]);
+            count++;
+        }
+
+        return correct;
+    }
+}
