@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test123 : MonoBehaviour
+{
+    // 아무 원소도 들어있지 않은 빈 배열 X가 있습니다. 길이가 같은 정수 배열 arr과 boolean 배열 flag가 매개변수로 주어질 때, flag를 차례대로 순회하며 flag[i]가 true라면 X의 뒤에 arr[i]를 arr[i] × 2 번 추가하고,
+    // flag[i]가 false라면 X에서 마지막 arr[i]개의 원소를 제거한 뒤 X를 return 하는 solution 함수를 작성해 주세요.
+
+    void Start()
+    {
+        Solution(new int[] { 3, 2, 4, 1, 3 }, new bool[] { true, false, true, false, false });
+    }
+
+    int[] Solution(int[] arr, bool[] flag)
+    {
+        List<int> arrange = new List<int>();
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            bool truth = flag[i];
+
+            if (truth)
+            {
+                for (int j = 0; j < arr[i] * 2; j++)
+                {
+                    arrange.Add(arr[i]);
+                }
+            }
+            else
+            {
+                for (int j = 0; j < arr[i]; j++)
+                {
+                    arrange.RemoveAt(arrange.Count - 1);
+                }
+            }
+        }
+
+        int[] x = new int[arrange.Count];
+        int count = 0;
+
+        foreach (int n in arrange)
+        {
+            x[count] = n;
+            Debug.Log(x[count]);
+            count++;
+        }
+
+        return x;
+    }
+}
