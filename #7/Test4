@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test130 : MonoBehaviour
+{
+    // 정수로 이루어진 리스트 num_list가 주어집니다. num_list에서 가장 작은 5개의 수를 오름차순으로 담은 리스트를 return하도록 solution 함수를 완성해주세요.
+    
+    void Start()
+    {
+        Solution(new List<int> { 12, 4, 15, 46, 38, 1, 14 });
+    }
+
+    List<int> Solution(List<int> num_list)
+    {
+        List<int> correct = new List<int>();
+        List<int> arrange = num_list;
+
+        for (int i = 0; i < arrange.Count - 1; i++)
+        {
+            for (int j = i + 1; j < arrange.Count; j++)
+            {
+                if (arrange[i] > arrange[j])
+                {
+                    int temp = arrange[i];
+                    arrange[i] = arrange[j];
+                    arrange[j] = temp;
+                }
+            }
+        }
+
+        for (int k = 0; k < 5; k++)
+        {
+            correct.Add(arrange[k]);
+            Debug.Log(correct[k]);
+        }
+
+        return correct;
+    }
+}
