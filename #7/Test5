@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test131 : MonoBehaviour
+{
+    // 정수로 이루어진 리스트 num_list가 주어집니다. num_list에서 가장 작은 5개의 수를
+    // 제외한 수들을 오름차순으로 담은 리스트를 return하도록 solution 함수를 완성해주세요.
+
+    void Start()
+    {
+        Solution(new List<int> { 12, 4, 15, 46, 38, 1, 14, 56, 32, 10 });
+    }
+
+    List<int> Solution(List<int> num_list)
+    {
+        List<int> correct = num_list;
+
+        for (int i = 0; i < correct.Count - 1; i++)
+        {
+            for (int j = i + 1; j < correct.Count; j++)
+            {
+                if (correct[i] > correct[j])
+                {
+                    int temp = correct[i];
+                    correct[i] = correct[j];
+                    correct[j] = temp;
+                }
+            }
+        }
+
+        for (int k = 0; k < 5; k++)
+        {
+            correct.RemoveAt(0); // List의 특징으로 당겨지기 때문에 0으로 고정한다.
+        }
+
+        foreach (int n in correct)
+        {
+            Debug.Log(n);
+        }
+
+        return correct;
+    }
+}
