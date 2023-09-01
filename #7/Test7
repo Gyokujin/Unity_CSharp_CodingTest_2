@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test133 : MonoBehaviour
+{
+    // 실수 flo가 매개 변수로 주어질 때, flo의 정수 부분을 return하도록 solution 함수를 완성해주세요.
+
+    void Start()
+    {
+        Solution(1.42f);
+        Solution(69.32f);
+    }
+
+    int Solution(float flo)
+    {
+        int correct = (int)flo;
+        Debug.Log(correct);
+        return correct;
+    }
+}
