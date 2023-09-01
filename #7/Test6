@@ -1,0 +1,57 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test132 : MonoBehaviour
+{
+    // 0번부터 n - 1번까지 n명의 학생 중 3명을 선발하는 전국 대회 선발 고사를 보았습니다. 등수가 높은 3명을 선발해야 하지만, 개인 사정으로 전국 대회에 참여하지 못하는 학생들이 있어 가능한 
+    // 학생 중 등수가 높은 3명을 선발하기로 했습니다. 각 학생들의 선발 고사 등수를 담은 정수 배열 rank와 전국 대회 참여 가능 여부가 담긴 boolean 배열 attendance가 매개변수로 주어집니다.
+    // 전국 대회에 선발된 학생 번호들을 등수가 높은 순서대로 각각 a, b, c번이라고 할 때  10000 × a + 100 × b + c를 return 하는 solution 함수를 작성해 주세요.
+
+    void Start()
+    {
+        Solution(new int[] { 3, 7, 2, 5, 4, 6, 1 }, new bool[] { false, true, true, true, true, false, false });
+        Solution(new int[] { 1, 2, 3 }, new bool[] { true, true, true });
+        Solution(new int[] { 6, 1, 5, 2, 3, 4 }, new bool[] { true, false, true, false, false, true });
+    }
+
+    int Solution(int[] rank, bool[] attendance)
+    {
+        int count = 0; // for 반복문을 돌면서 3이 되면 for을 종료한다.
+        int target = 1;
+
+        int a = -1;
+        int b = -1;
+        int c = -1;
+
+        while (count < 3)
+        {
+            int num = Array.FindIndex(rank, x => x == target);
+
+            if (attendance[num])
+            {
+                if (a == -1)
+                {
+                    a = num;
+                }
+                else if (b == -1)
+                {
+                    b = num;
+                }
+                else
+                {
+                    c = num;
+                }
+
+                count++;
+            }
+
+            target++;
+        }
+
+        int correct = 10000 * a + 100 * b + c;
+        Debug.Log(correct);
+        return correct;
+    }
+}
