@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test136 : MonoBehaviour
+{
+    // 정수로 이루어진 문자열 n_str이 주어질 때, n_str의 가장 왼쪽에 처음으로 등장하는 0들을 뗀 문자열을 return하도록 solution 함수를 완성해주세요.
+    
+    void Start()
+    {
+        Solution("0010");
+        Solution("854020");
+    }
+
+    string Solution(string n_str)
+    {
+        string correct = "";
+        int start = 0; // 왼쪽의 0들을 떼고 난 인덱스
+
+        for (int i = 0; i < n_str.Length; i++)
+        {
+            string s = n_str[i].ToString();
+
+            if (s != "0")
+            {
+                start = i;
+                break;
+            }
+        }
+
+        for (int j = start; j < n_str.Length; j++)
+        {
+            correct += n_str[j];
+        }
+
+        Debug.Log(correct);
+        return correct;
+    }
+}
