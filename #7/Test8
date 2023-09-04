@@ -1,0 +1,29 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test134 : MonoBehaviour
+{
+    // 한 자리 정수로 이루어진 문자열 num_str이 주어질 때, 각 자리수의 합을 return하도록 solution 함수를 완성해주세요.
+    
+    void Start()
+    {
+        Solution("123456789");
+        Solution("1000000");
+    }
+
+    int Solution(string num_str)
+    {
+        int correct = 0;
+
+        for (int i = 0; i < num_str.Length; i++)
+        {
+            string word = num_str[i].ToString();
+            correct += int.Parse(word);
+        }
+
+        Debug.Log(correct);
+        return correct;
+    }
+}
