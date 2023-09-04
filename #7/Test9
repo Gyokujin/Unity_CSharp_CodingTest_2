@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test135 : MonoBehaviour
+{
+    // 숫자로만 이루어진 문자열 n_str이 주어질 때, n_str을 정수로 변환하여 return하도록 solution 함수를 완성해주세요.
+    
+    void Start()
+    {
+        Solution("10");
+        Solution("8542");
+    }
+
+    int Solution(string n_str)
+    {
+        int correct = int.Parse(n_str);
+        Debug.Log(correct);
+        return correct;
+    }
+}
