@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
+using UnityEngine;
+
+public class Test137 : MonoBehaviour
+{
+    // 0 이상의 두 정수가 문자열 a, b로 주어질 때, a + b의 값을 문자열로 return 하는 solution 함수를 작성해 주세요.
+
+    void Start()
+    {
+        Solution("582", "734");
+        Solution("18446744073709551615", "287346502836570928366");
+        Solution("0", "0");
+    }
+
+    string Solution(string a, string b)
+    {
+        BigInteger numA = BigInteger.Parse(a); // 표현해야 하는 수의 범위가 매우 크기 때문에 BigInteger을 사용한다.
+        BigInteger numB = BigInteger.Parse(b);
+        BigInteger sum = numA + numB;
+
+        string correct = sum.ToString();
+        Debug.Log(correct);
+        return correct;
+    }
+}
