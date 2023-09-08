@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test145 : MonoBehaviour
+{
+    // 정수 배열 date1과 date2가 주어집니다. 두 배열은 각각 날짜를 나타내며 [year, month, day] 꼴로 주어집니다. 각 배열에서 year는 연도를, month는 월을, day는 날짜를 나타냅니다.
+    // 만약 date1이 date2보다 앞서는 날짜라면 1을, 아니면 0을 return 하는 solution 함수를 완성해 주세요.
+
+    void Start()
+    {
+        Solution(new int[] { 2021, 12, 28 }, new int[] { 2021, 12, 29 });
+        Solution(new int[] { 1024, 10, 24 }, new int[] { 1024, 10, 24 });
+    }
+
+    int Solution(int[] date1, int[] date2)
+    {
+        int correct = 0;
+
+        int year1 = date1[0];
+        int month1 = date1[1];
+        int day1 = date1[2];
+
+        int year2 = date2[0];
+        int month2 = date2[1];
+        int day2 = date2[2];
+
+        if (year1 == year2)
+        {
+            if (month1 == month2)
+            {
+                correct = day2 > day1 ? 1 : 0;
+            }
+            else
+            {
+                correct = month2 > month1 ? 1 : 0;
+            }
+        }
+        else
+        {
+            correct = year2 > year1 ? 1 : 0;
+        }
+
+        Debug.Log(correct);
+        return correct;
+    }
+}
