@@ -31,24 +31,17 @@ public class Test148 : MonoBehaviour
         {
             string menu = order[i];
 
-            switch (menu)
+            if (menu.Contains("americano") || menu == "anything") // 아메리카노가 들어간 메뉴
             {
-                case "iceamericano":
-                case "americanoice":
-                case "hotamericano":
-                case "americanohot":
-                case "americano":
-                case "anything": // 아무거나도 아메리카노로 통일
-                    correct += 4500;
-                    break;
-
-                case "icecafelatte":
-                case "cafelatteice":
-                case "hotcafelatte":
-                case "cafelattehot":
-                case "cafelatte":
-                    correct += 5000;
-                    break;
+                correct += 4500;
+            }
+            else if (menu.Contains("cafelatte"))// 카페 라테가 들어간 메뉴
+            {
+                correct += 5000;
+            }
+            else // 아무거나 : 아메리카노
+            {
+                correct += 4500;
             }
         }
 
