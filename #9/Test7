@@ -1,0 +1,81 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test151 : MonoBehaviour
+{
+    // 양의 정수 n이 매개변수로 주어집니다. n × n 배열에 1부터 n2 까지 정수를 인덱스 [0][0]부터
+    // 시계방향 나선형으로 배치한 이차원 배열을 return 하는 solution 함수를 작성해 주세요.
+
+    void Start()
+    {
+        Solution(4);
+        Solution(5);
+    }
+
+    int[,] Solution(int n)
+    {
+        int[,] correct = new int[n, n];
+        int index = 1; // 현재 몇번째 이동인지 체크
+        int count = n; // 이동할 횟수. 후에 (n - 1)
+        int value = 1; // 현재 넣어야 할 값
+
+        // 좌표 및 이동
+        int dir = 0; // 0 = 우, 1 = 하, 2 = 좌, 3 = 상
+        int inCreX = 0;
+        int inCreY = 0;
+        int x = 0;
+        int y = 0;
+
+        while (value < n * n + 1)
+        {
+            count = n - index / 2;
+
+            switch (dir)
+            {
+                case 0: // 우
+                    inCreX = 1;
+                    inCreY = 0;
+                    break;
+
+                case 1: // 하
+                    inCreX = 0;
+                    inCreY = 1;
+                    break;
+
+                case 2: // 좌
+                    inCreX = -1;
+                    inCreY = 0;
+                    break;
+
+                case 3: // 상
+                    inCreX = 0;
+                    inCreY = -1;
+                    break;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (value == 1)
+                {
+                    correct[0, 0] = 1;
+                }
+                else
+                {
+                    x += inCreX;
+                    y += inCreY;
+
+                    correct[x, y] = value;
+                }
+
+                Debug.Log(x + ", " + y + " = " + value);
+                value++;
+            }
+
+            index++;
+            dir = dir != 3 ? dir + 1 : 0;
+        }
+
+        return correct;
+    }
+}
