@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test153 : MonoBehaviour
+{
+    // 이차원 정수 배열 arr이 매개변수로 주어집니다. arr의 행의 수가 더 많다면 열의 수가 행의 수와 같아지도록 각 행의 끝에 0을 추가하고, 열의 수가 더 많다면 행의 수가 열의 수와 같아지도록 각 열의 끝에 0을 추가한 이차원 배열을 return 하는 solution 함수를 작성해 주세요.
+    
+    void Start()
+    {
+        Solution(new int[,] { { 572, 22, 37 }, { 287, 726, 384 }, { 85, 137, 292 }, { 487, 13, 876 } });
+        Solution(new int[,] { { 57, 192, 534, 2 }, { 9, 345, 192, 999 } });
+        Solution(new int[,] { { 1, 2 }, { 3, 4 } });
+    }
+
+    int[,] Solution(int[,] arr)
+    {
+        int lengthX = arr.GetLength(0);
+        int lengthY = arr.GetLength(1);
+        int bigLength = 0; // x나 y중 큰 값을 넣는다.
+
+        if (lengthX > lengthY)
+        {
+            bigLength = lengthX;
+        }
+        else if (lengthX < lengthY)
+        {
+            bigLength = lengthY;
+        }
+
+        int[,] correct = lengthX == lengthY ? arr : new int[bigLength, bigLength];
+
+        if (lengthX != lengthY)
+        {
+            if (lengthX > lengthY)
+            {
+                for (int i = 0; i < lengthX; i++)
+                {
+                    for (int j = 0; j < lengthY; j++)
+                    {
+                        if (j <= lengthY)
+                        {
+                            correct[i, j] = arr[i, j];
+                        }
+                        else
+                        {
+                            correct[i, j] = 0;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < lengthX; i++)
+                {
+                    for (int j = 0; j < lengthY; j++)
+                    {
+                        if (i <= lengthX)
+                        {
+                            correct[i, j] = arr[i, j];
+                        }
+                        else
+                        {
+                            correct[i, j] = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach (int n in correct)
+        {
+            Debug.Log(n);
+        }
+
+        return correct;
+    }
+}
